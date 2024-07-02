@@ -1,0 +1,14 @@
+C:\Users\Decagon PC\source\repos\UserProductAPI\UserProductAPI.Core\bin\Debug\net7.0\UserProductAPI.Core.deps.json
+C:\Users\Decagon PC\source\repos\UserProductAPI\UserProductAPI.Core\bin\Debug\net7.0\UserProductAPI.Core.runtimeconfig.json
+C:\Users\Decagon PC\source\repos\UserProductAPI\UserProductAPI.Core\bin\Debug\net7.0\UserProductAPI.Core.dll
+C:\Users\Decagon PC\source\repos\UserProductAPI\UserProductAPI.Core\bin\Debug\net7.0\UserProductAPI.Core.pdb
+C:\Users\Decagon PC\source\repos\UserProductAPI\UserProductAPI.Core\obj\Debug\net7.0\UserProductAPI.Core.csproj.AssemblyReference.cache
+C:\Users\Decagon PC\source\repos\UserProductAPI\UserProductAPI.Core\obj\Debug\net7.0\UserProductAPI.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Decagon PC\source\repos\UserProductAPI\UserProductAPI.Core\obj\Debug\net7.0\UserProductAPI.Core.AssemblyInfoInputs.cache
+C:\Users\Decagon PC\source\repos\UserProductAPI\UserProductAPI.Core\obj\Debug\net7.0\UserProductAPI.Core.AssemblyInfo.cs
+C:\Users\Decagon PC\source\repos\UserProductAPI\UserProductAPI.Core\obj\Debug\net7.0\UserProductAPI.Core.csproj.CoreCompileInputs.cache
+C:\Users\Decagon PC\source\repos\UserProductAPI\UserProductAPI.Core\obj\Debug\net7.0\UserProductAPI.Core.dll
+C:\Users\Decagon PC\source\repos\UserProductAPI\UserProductAPI.Core\obj\Debug\net7.0\refint\UserProductAPI.Core.dll
+C:\Users\Decagon PC\source\repos\UserProductAPI\UserProductAPI.Core\obj\Debug\net7.0\UserProductAPI.Core.pdb
+C:\Users\Decagon PC\source\repos\UserProductAPI\UserProductAPI.Core\obj\Debug\net7.0\UserProductAPI.Core.genruntimeconfig.cache
+C:\Users\Decagon PC\source\repos\UserProductAPI\UserProductAPI.Core\obj\Debug\net7.0\ref\UserProductAPI.Core.dll
