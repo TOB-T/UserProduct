@@ -1,11 +1,23 @@
 {
   "Version": 1,
-  "Hash": "5XXQ/73UaHoNpN3xGt6G107oElNqR310i8603oWG6TU=",
+  "Hash": "fY0R8FU0+xyh8+hs2QkmjXu6wxYSaXQFGn+qEo627+0=",
   "Source": "UserProductAPI.Presentation",
   "BasePath": "_content/UserProductAPI.Presentation",
   "Mode": "Default",
   "ManifestType": "Build",
-  "ReferencedProjectsConfiguration": [],
+  "ReferencedProjectsConfiguration": [
+    {
+      "Identity": "C:\\Users\\Decagon PC\\source\\repos\\UserProductAPI\\UserProductAPI.Infrastructure\\UserProductAPI.Infrastructure.csproj",
+      "Version": 2,
+      "Source": "UserProductAPI.Infrastructure",
+      "GetPublishAssetsTargets": "ComputeReferencedStaticWebAssetsPublishManifest;GetCurrentProjectPublishStaticWebAssetItems",
+      "AdditionalPublishProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier;SelfContained",
+      "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
+      "AdditionalBuildProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier;SelfContained"
+    }
+  ],
   "DiscoveryPatterns": [],
   "Assets": []
 }

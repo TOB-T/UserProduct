@@ -1,7 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using UserProductAPI.Core.DTOs;
@@ -14,12 +11,14 @@ public class UserRepository : IUserRepository
     private readonly UserProductAuthDbContext _context;
     private readonly IMapper _mapper;
     private readonly IPasswordHasher<User> _passwordHasher;
+    private readonly ITokenInterface _tokenService;
 
-    public UserRepository(UserProductAuthDbContext context, IMapper mapper, IPasswordHasher<User> passwordHasher)
+    public UserRepository(UserProductAuthDbContext context, IMapper mapper, IPasswordHasher<User> passwordHasher, ITokenInterface tokenService)
     {
         _context = context;
         _mapper = mapper;
         _passwordHasher = passwordHasher;
+        _tokenService = tokenService;
     }
 
     public async Task<ResponseDto<UserResponseDto>> RegisterAsync(UserRegistrationDto userDto)
@@ -67,7 +66,7 @@ public class UserRepository : IUserRepository
             };
         }
 
-        var token = Guid.NewGuid().ToString(); // Simplified token generation
+        var token = _tokenService.GenerateToken(user);
 
         return new ResponseDto<string>
         {
@@ -79,23 +78,20 @@ public class UserRepository : IUserRepository
 
     public async Task<ResponseDto<UserResponseDto>> LoginByTokenAsync(UserTokenDto tokenDto)
     {
-        // Simplified token validation
-        var user = await _context.Users.FirstOrDefaultAsync(); // Replace with actual token lookup logic
-
-        if (user == null)
+        if (_tokenService.ValidateToken(tokenDto.Token, out var user))
         {
             return new ResponseDto<UserResponseDto>
             {
-                Success = false,
-                Message = "Invalid token"
+                Success = true,
+                Message = "Token validated",
+                Data = _mapper.Map<UserResponseDto>(user)
             };
         }
 
         return new ResponseDto<UserResponseDto>
         {
-            Success = true,
-            Message = "Token validated",
-            Data = _mapper.Map<UserResponseDto>(user)
+            Success = false,
+            Message = "Invalid token"
         };
     }
 
@@ -122,6 +118,7 @@ public class UserRepository : IUserRepository
         };
     }
 }
+
 
 
 

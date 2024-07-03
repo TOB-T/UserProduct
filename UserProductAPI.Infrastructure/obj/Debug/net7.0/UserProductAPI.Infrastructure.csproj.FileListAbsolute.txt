@@ -1,4 +1,5 @@
 C:\Users\Decagon PC\source\repos\UserProductAPI\UserProductAPI.Infrastructure\bin\Debug\net7.0\UserProductAPI.Infrastructure.deps.json
+C:\Users\Decagon PC\source\repos\UserProductAPI\UserProductAPI.Infrastructure\bin\Debug\net7.0\UserProductAPI.Infrastructure.runtimeconfig.json
 C:\Users\Decagon PC\source\repos\UserProductAPI\UserProductAPI.Infrastructure\bin\Debug\net7.0\UserProductAPI.Infrastructure.dll
 C:\Users\Decagon PC\source\repos\UserProductAPI\UserProductAPI.Infrastructure\bin\Debug\net7.0\UserProductAPI.Infrastructure.pdb
 C:\Users\Decagon PC\source\repos\UserProductAPI\UserProductAPI.Infrastructure\bin\Debug\net7.0\UserProductAPI.Core.dll
@@ -8,10 +9,17 @@ C:\Users\Decagon PC\source\repos\UserProductAPI\UserProductAPI.Infrastructure\ob
 C:\Users\Decagon PC\source\repos\UserProductAPI\UserProductAPI.Infrastructure\obj\Debug\net7.0\UserProductAPI.Infrastructure.AssemblyInfoInputs.cache
 C:\Users\Decagon PC\source\repos\UserProductAPI\UserProductAPI.Infrastructure\obj\Debug\net7.0\UserProductAPI.Infrastructure.AssemblyInfo.cs
 C:\Users\Decagon PC\source\repos\UserProductAPI\UserProductAPI.Infrastructure\obj\Debug\net7.0\UserProductAPI.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\Decagon PC\source\repos\UserProductAPI\UserProductAPI.Infrastructure\obj\Debug\net7.0\staticwebassets\msbuild.UserProductAPI.Infrastructure.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\Decagon PC\source\repos\UserProductAPI\UserProductAPI.Infrastructure\obj\Debug\net7.0\staticwebassets\msbuild.build.UserProductAPI.Infrastructure.props
+C:\Users\Decagon PC\source\repos\UserProductAPI\UserProductAPI.Infrastructure\obj\Debug\net7.0\staticwebassets\msbuild.buildMultiTargeting.UserProductAPI.Infrastructure.props
+C:\Users\Decagon PC\source\repos\UserProductAPI\UserProductAPI.Infrastructure\obj\Debug\net7.0\staticwebassets\msbuild.buildTransitive.UserProductAPI.Infrastructure.props
+C:\Users\Decagon PC\source\repos\UserProductAPI\UserProductAPI.Infrastructure\obj\Debug\net7.0\staticwebassets.pack.json
+C:\Users\Decagon PC\source\repos\UserProductAPI\UserProductAPI.Infrastructure\obj\Debug\net7.0\staticwebassets.build.json
+C:\Users\Decagon PC\source\repos\UserProductAPI\UserProductAPI.Infrastructure\obj\Debug\net7.0\staticwebassets.development.json
+C:\Users\Decagon PC\source\repos\UserProductAPI\UserProductAPI.Infrastructure\obj\Debug\net7.0\scopedcss\bundle\UserProductAPI.Infrastructure.styles.css
 C:\Users\Decagon PC\source\repos\UserProductAPI\UserProductAPI.Infrastructure\obj\Debug\net7.0\UserProductAPI.Infrastructure.csproj.CopyComplete
 C:\Users\Decagon PC\source\repos\UserProductAPI\UserProductAPI.Infrastructure\obj\Debug\net7.0\UserProductAPI.Infrastructure.dll
 C:\Users\Decagon PC\source\repos\UserProductAPI\UserProductAPI.Infrastructure\obj\Debug\net7.0\refint\UserProductAPI.Infrastructure.dll
 C:\Users\Decagon PC\source\repos\UserProductAPI\UserProductAPI.Infrastructure\obj\Debug\net7.0\UserProductAPI.Infrastructure.pdb
-C:\Users\Decagon PC\source\repos\UserProductAPI\UserProductAPI.Infrastructure\obj\Debug\net7.0\ref\UserProductAPI.Infrastructure.dll
-C:\Users\Decagon PC\source\repos\UserProductAPI\UserProductAPI.Infrastructure\bin\Debug\net7.0\UserProductAPI.Infrastructure.runtimeconfig.json
 C:\Users\Decagon PC\source\repos\UserProductAPI\UserProductAPI.Infrastructure\obj\Debug\net7.0\UserProductAPI.Infrastructure.genruntimeconfig.cache
+C:\Users\Decagon PC\source\repos\UserProductAPI\UserProductAPI.Infrastructure\obj\Debug\net7.0\ref\UserProductAPI.Infrastructure.dll
