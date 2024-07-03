@@ -5,6 +5,7 @@ using UserProductAPI.Core.DTOs;
 using UserProductAPI.Core.Entities;
 using UserProductAPI.Infrastructure.Data;
 using UserProductAPI.Infrastructure.Interface;
+using System.Threading.Tasks;
 
 public class UserRepository : IUserRepository
 {
@@ -12,13 +13,15 @@ public class UserRepository : IUserRepository
     private readonly IMapper _mapper;
     private readonly IPasswordHasher<User> _passwordHasher;
     private readonly ITokenInterface _tokenService;
+    private readonly IEmailService _emailService;
 
-    public UserRepository(UserProductAuthDbContext context, IMapper mapper, IPasswordHasher<User> passwordHasher, ITokenInterface tokenService)
+    public UserRepository(UserProductAuthDbContext context, IMapper mapper, IPasswordHasher<User> passwordHasher, ITokenInterface tokenService, IEmailService emailService)
     {
         _context = context;
         _mapper = mapper;
         _passwordHasher = passwordHasher;
         _tokenService = tokenService;
+        _emailService = emailService;
     }
 
     public async Task<ResponseDto<UserResponseDto>> RegisterAsync(UserRegistrationDto userDto)
@@ -33,6 +36,11 @@ public class UserRepository : IUserRepository
 
         _context.Users.Add(user);
         await _context.SaveChangesAsync();
+
+        // Send confirmation email
+        var subject = "Welcome to UserProduct";
+        var body = $"Hello {user.FirstName},<br/><br/>Thank you for registering at UserProduct!<br/><br/>Best Regards,<br/>The UserProduct Team";
+        await _emailService.SendEmailAsync(user.Email, subject, body);
 
         var response = new ResponseDto<UserResponseDto>
         {
