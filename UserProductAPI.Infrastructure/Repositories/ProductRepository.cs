@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
@@ -59,6 +60,30 @@ namespace UserProductAPI.Infrastructure.Repositories
             return _mapper.Map<IEnumerable<ProductResponseDto>>(products);
         }
 
+        public async Task<PaginatedList<ProductResponseDto>> GetProductsAsync(ProductFilterDto filterDto, int pageIndex, int pageSize, string userId)
+        {
+            var query = _context.Products.AsQueryable();
+
+            // Apply filtering
+            if (!string.IsNullOrEmpty(filterDto.SearchTerm))
+            {
+                query = query.Where(p => p.Name.Contains(filterDto.SearchTerm) || p.Description.Contains(filterDto.SearchTerm));
+            }
+
+            // Apply sorting
+            if (!string.IsNullOrEmpty(filterDto.SortBy))
+            {
+                query = filterDto.SortOrder.ToLower() == "desc"
+                    ? query.OrderByDescending(e => EF.Property<object>(e, filterDto.SortBy))
+                    : query.OrderBy(e => EF.Property<object>(e, filterDto.SortBy));
+            }
+
+            query = query.Where(p => p.UserId == userId);
+
+            var paginatedList = await PaginatedList<Product>.CreateAsync(query, pageIndex, pageSize);
+            return _mapper.Map<PaginatedList<ProductResponseDto>>(paginatedList);
+        }
+
         public async Task<DeleteResponseDto> DeleteProductAsync(int id, string userId)
         {
             var product = await _context.Products.FirstOrDefaultAsync(p => p.Id == id && p.UserId == userId);
@@ -73,6 +98,7 @@ namespace UserProductAPI.Infrastructure.Repositories
         }
     }
 }
+
 
 
 

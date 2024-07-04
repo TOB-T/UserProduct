@@ -81,8 +81,18 @@ namespace UserProductAPI.Presentation.Controllers
             }
             return Ok(result.Message);
         }
+
+        [HttpGet("paged")]
+        [Authorize]
+        public async Task<IActionResult> GetProductsPaged([FromQuery] ProductFilterDto filterDto, int pageIndex = 1, int pageSize = 10)
+        {
+            var userId = GetUserId();
+            var result = await _productRepository.GetProductsAsync(filterDto, pageIndex, pageSize, userId);
+            return Ok(result);
+        }
     }
 }
+
 
 
 
