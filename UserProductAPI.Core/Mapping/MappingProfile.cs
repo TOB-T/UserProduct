@@ -16,6 +16,9 @@ namespace UserProductAPI.Core.Mapping
             CreateMap<UserRegistrationDto, User>().ReverseMap();
             CreateMap<User, UserResponseDto>().ReverseMap();
             CreateMap<UserUpdateDto, User>().ReverseMap();
+            CreateMap<ProductCreateDto, Product>().ReverseMap();
+            CreateMap<ProductUpdateDto, Product>().ReverseMap();
+            CreateMap<Product, ProductResponseDto>().ReverseMap();
         }
     }
 }

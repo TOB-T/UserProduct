@@ -9,6 +9,7 @@ using UserProductAPI.Core.DTOs;
 using UserProductAPI.Core.Entities;
 using UserProductAPI.Infrastructure.Data;
 using UserProductAPI.Infrastructure.Interface;
+using UserProductAPI.Infrastructure.Repositories;
 using UserProductAPI.Infrastructure.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -50,6 +51,9 @@ builder.Services.AddSwaggerGen(c =>
 builder.Services.AddDbContext<UserProductAuthDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("UserProductAuthConnectionString")));
 
+builder.Services.AddDbContext<UserProductDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("UserProductConnectionString")));
+
 // Register AutoMapper
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
@@ -58,6 +62,7 @@ builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
 
 // Register UserRepository
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
 
 // Register TokenService
 builder.Services.AddScoped<ITokenInterface, TokenService>();
