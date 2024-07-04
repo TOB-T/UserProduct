@@ -95,6 +95,12 @@ builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
+// Ensure the default user exists
+using (var scope = app.Services.CreateScope())
+{
+    SeedData.EnsureDefaultUserExists(scope.ServiceProvider);
+}
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {

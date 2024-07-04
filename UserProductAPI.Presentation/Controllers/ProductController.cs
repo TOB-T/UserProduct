@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using UserProductAPI.Core.DTOs;
 using UserProductAPI.Infrastructure.Interface;
@@ -11,27 +12,34 @@ namespace UserProductAPI.Presentation.Controllers
     public class ProductController : ControllerBase
     {
         private readonly IProductRepository _productRepository;
+        private readonly ITokenInterface _tokenService;
 
-        public ProductController(IProductRepository productRepository)
+        public ProductController(IProductRepository productRepository, ITokenInterface tokenService)
         {
             _productRepository = productRepository;
+            _tokenService = tokenService;
+        }
+
+        private string GetUserId()
+        {
+            return User.FindFirstValue(ClaimTypes.NameIdentifier);
         }
 
         [HttpPost]
         [Authorize]
-        //[AllowAnonymous]
         public async Task<IActionResult> CreateProduct([FromBody] ProductCreateDto productDto)
         {
-            var result = await _productRepository.AddProductAsync(productDto);
+            var userId = GetUserId();
+            var result = await _productRepository.AddProductAsync(productDto, userId);
             return CreatedAtAction(nameof(GetProductById), new { id = result.Id }, result);
         }
 
         [HttpPut]
         [Authorize]
-        //[AllowAnonymous]
         public async Task<IActionResult> UpdateProduct([FromBody] ProductUpdateDto productDto)
         {
-            var result = await _productRepository.UpdateProductAsync(productDto);
+            var userId = GetUserId();
+            var result = await _productRepository.UpdateProductAsync(productDto, userId);
             if (result == null)
             {
                 return NotFound();
@@ -40,10 +48,11 @@ namespace UserProductAPI.Presentation.Controllers
         }
 
         [HttpGet("{id}")]
-        //[AllowAnonymous]
+        [Authorize]
         public async Task<IActionResult> GetProductById(int id)
         {
-            var result = await _productRepository.GetProductByIdAsync(id);
+            var userId = GetUserId();
+            var result = await _productRepository.GetProductByIdAsync(id, userId);
             if (result == null)
             {
                 return NotFound();
@@ -52,19 +61,20 @@ namespace UserProductAPI.Presentation.Controllers
         }
 
         [HttpGet]
-        //[AllowAnonymous]
+        [Authorize]
         public async Task<IActionResult> GetAllProducts()
         {
-            var result = await _productRepository.GetAllProductsAsync();
+            var userId = GetUserId();
+            var result = await _productRepository.GetAllProductsAsync(userId);
             return Ok(result);
         }
 
         [HttpDelete("{id}")]
         [Authorize]
-        //[AllowAnonymous]
         public async Task<IActionResult> DeleteProduct(int id)
         {
-            var result = await _productRepository.DeleteProductAsync(id);
+            var userId = GetUserId();
+            var result = await _productRepository.DeleteProductAsync(id, userId);
             if (!result.Success)
             {
                 return NotFound(result.Message);
@@ -73,3 +83,6 @@ namespace UserProductAPI.Presentation.Controllers
         }
     }
 }
+
+
+

@@ -14,5 +14,7 @@ namespace UserProductAPI.Core.Entities
         public string City { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+
+        public ICollection<Product> Products { get; set; } = new List<Product>(); // Navigation property
     }
 }

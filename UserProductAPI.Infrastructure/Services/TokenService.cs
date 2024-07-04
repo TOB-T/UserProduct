@@ -75,12 +75,13 @@ namespace UserProductAPI.Infrastructure.Services
 
                 user = _context.Users.FirstOrDefault(u => u.Id == userId);
 
-                return true;
+                return user != null;
             }
             catch
             {
                 return false;
             }
         }
+
     }
 }

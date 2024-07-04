@@ -20,17 +20,18 @@ namespace UserProductAPI.Infrastructure.Repositories
             _mapper = mapper;
         }
 
-        public async Task<ProductResponseDto> AddProductAsync(ProductCreateDto productDto)
+        public async Task<ProductResponseDto> AddProductAsync(ProductCreateDto productDto, string userId)
         {
             var product = _mapper.Map<Product>(productDto);
+            product.UserId = userId;
             _context.Products.Add(product);
             await _context.SaveChangesAsync();
             return _mapper.Map<ProductResponseDto>(product);
         }
 
-        public async Task<ProductResponseDto> UpdateProductAsync(ProductUpdateDto productDto)
+        public async Task<ProductResponseDto> UpdateProductAsync(ProductUpdateDto productDto, string userId)
         {
-            var product = await _context.Products.FindAsync(productDto.Id);
+            var product = await _context.Products.FirstOrDefaultAsync(p => p.Id == productDto.Id && p.UserId == userId);
             if (product == null)
             {
                 return null;
@@ -46,21 +47,21 @@ namespace UserProductAPI.Infrastructure.Repositories
             return _mapper.Map<ProductResponseDto>(product);
         }
 
-        public async Task<ProductResponseDto> GetProductByIdAsync(int id)
+        public async Task<ProductResponseDto> GetProductByIdAsync(int id, string userId)
         {
-            var product = await _context.Products.FindAsync(id);
+            var product = await _context.Products.FirstOrDefaultAsync(p => p.Id == id && p.UserId == userId);
             return _mapper.Map<ProductResponseDto>(product);
         }
 
-        public async Task<IEnumerable<ProductResponseDto>> GetAllProductsAsync()
+        public async Task<IEnumerable<ProductResponseDto>> GetAllProductsAsync(string userId)
         {
-            var products = await _context.Products.ToListAsync();
+            var products = await _context.Products.Where(p => p.UserId == userId).ToListAsync();
             return _mapper.Map<IEnumerable<ProductResponseDto>>(products);
         }
 
-        public async Task<DeleteResponseDto> DeleteProductAsync(int id)
+        public async Task<DeleteResponseDto> DeleteProductAsync(int id, string userId)
         {
-            var product = await _context.Products.FindAsync(id);
+            var product = await _context.Products.FirstOrDefaultAsync(p => p.Id == id && p.UserId == userId);
             if (product == null)
             {
                 return new DeleteResponseDto { Success = false, Message = "Product not found." };
@@ -72,6 +73,12 @@ namespace UserProductAPI.Infrastructure.Repositories
         }
     }
 }
+
+
+
+
+
+
 
 
 

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using UserProductAPI.Infrastructure.Data;
 
@@ -11,9 +12,11 @@ using UserProductAPI.Infrastructure.Data;
 namespace UserProductAPI.Infrastructure.Migrations.UserProductDb
 {
     [DbContext(typeof(UserProductDbContext))]
-    partial class UserProductDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240704061038_AddUserIdToProducts")]
+    partial class AddUserIdToProducts
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
